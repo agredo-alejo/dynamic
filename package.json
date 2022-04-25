@@ -1,0 +1,35 @@
+{
+  "name": "@apjs/dynamic",
+  "version": "1.0.0",
+  "description": "Dynamic is a library with a set of functions to facilitate the use of the HTML canvas, mouse and touch events, functionality around the 'requestAnimationFrame' method, and some mathematical utilities",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "canvas",
+    "mouse",
+    "touch",
+    "events",
+    "draw",
+    "animate",
+    "animation",
+    "fps",
+    "requestAnimationFrame",
+    "animation-controller",
+    "color",
+    "gamedev",
+    "math",
+    "utils",
+    "dynamic"
+  ],
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "typescript": "^4.6.3"
+  }
+}
