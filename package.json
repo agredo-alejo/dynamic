@@ -30,6 +30,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@apjs/vector": "^2.0.0",
     "typescript": "^4.6.3"
   }
 }
