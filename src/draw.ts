@@ -86,9 +86,8 @@ export const background = (ctx: CanvasRenderingContext2D, color?: string) => {
 /**
  * A set of two context2D methods, first the ctx.beginPath method is called and then ctx.arc.
  * 
- * If position is an instance of Vector, the rest of the parameters and their default values will be shifted by one position, so positionY will be @param radius, radius will be @param startAngle, and so on.
  * @param ctx CanvasRenderingContext2D
- * @param position Vector | Number
+ * @param position Number
  * @param positionY Number
  * @param radius Number, by default will be ctx.lineWidth
  * @param startAngle Number, by default will be 0
@@ -97,58 +96,89 @@ export const background = (ctx: CanvasRenderingContext2D, color?: string) => {
  */
 export const circle = (
     ctx: CanvasRenderingContext2D,
-    position: Vector | number,
+    position: number,
     positionY: number,
     radius?: number,
     startAngle?: number,
-    endAngle?: number | boolean,
+    endAngle?: number,
     anticlockwise?: boolean) => {
 
     ctx.beginPath()
 
-    if (position instanceof Vector) {
-        ctx.arc(
-            position.x,
-            position.y,
-            positionY || ctx.lineWidth,
-            radius || 0,
-            startAngle || Tau,
-            endAngle as boolean)
-
-        return
-    }
     ctx.arc(
         position,
         positionY,
         radius || ctx.lineWidth,
         startAngle || 0,
-        endAngle as number || Tau,
+        endAngle || Tau,
         anticlockwise
     )
 
 }
+/**
+ * A set of two context2D methods, first the ctx.beginPath method is called and then ctx.arc.
+ * 
+ * @param ctx CanvasRenderingContext2D
+ * @param position Vector
+ * @param radius Number, by default will be ctx.lineWidth
+ * @param startAngle Number, by default will be 0
+ * @param endAngle Number, by default will be Math.PI * 2
+ * @param counterlockwise Boolean
+ */
+export const circleVector = (
+    ctx: CanvasRenderingContext2D,
+    position: Vector,
+    radius: number,
+    startAngle?: number,
+    endAngle?: number,
+    anticlockwise?: boolean,
+) => {
+
+    ctx.beginPath()
+
+    ctx.arc(
+        position.x,
+        position.y,
+        radius || ctx.lineWidth,
+        startAngle || 0,
+        endAngle || Tau,
+        anticlockwise as boolean)
+}
+
 
 /**
- * If position is an instance of Vector, the rest of the parameters and their default values will be shifted by one position, so positionY will be @param width, width will be @param height
  * @param ctx CanvasRenderingContext2D
- * @param position Vector | Number
+ * @param position Number
  * @param positionY Number
  * @param width Number, by default will be equal to 10
  * @param height Number, if undefined will be equal to width
  */
 export const rect = (
     ctx: CanvasRenderingContext2D,
-    position: Vector | number,
+    position: number,
     positionY: number,
     width: number = 10,
     height?: number
 ) => {
+
     ctx.beginPath()
-    if (position instanceof Vector) {
-        ctx.rect(position.x, position.y, positionY, width || positionY)
-        return
-    }
     ctx.rect(position, positionY, width, height || width)
+}
+/**
+ * @param ctx CanvasRenderingContext2D
+ * @param position Vector
+ * @param width Number, by default will be equal to 10
+ * @param height Number, if undefined will be equal to width
+ */
+export const rectVector = (
+    ctx: CanvasRenderingContext2D,
+    position: Vector,
+    width: number = 10,
+    height?: number
+) => {
+
+    ctx.beginPath()
+    ctx.rect(position.x, position.y, width, height || width)
 }
 
 export const triangleVector = (ctx: CanvasRenderingContext2D, point1: Vector, point2: Vector, point3: Vector) => {

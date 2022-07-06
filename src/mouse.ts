@@ -2,29 +2,31 @@ export interface Mouse {
     x: undefined | number
     y: undefined | number
     dragging: boolean
-    onMouseDragg: Function
 }
+
 export const mouse: Mouse = {
     x: undefined,
     y: undefined,
     dragging: false,
-    onMouseDragg: () => { }
 };
-export const mouseDragged = (callback: Function) => {
-    mouse.onMouseDragg = callback
+
+let mouseDraggedCallback: Function = () => { }
+
+export const onMouseDragg = (callback: Function) => {
+    mouseDraggedCallback = callback
 }
 const mousemove = (event: MouseEvent) => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
     if (mouse.dragging) {
-        mouse.onMouseDragg();
+        mouseDraggedCallback();
     }
 }
 const touchmove = (event: TouchEvent) => {
     mouse.x = event.targetTouches[0].pageX;
     mouse.y = event.targetTouches[0].pageY;
     if (mouse.dragging) {
-        mouse.onMouseDragg();
+        mouseDraggedCallback();
     }
 }
 const mousedown = (event: MouseEvent) => {

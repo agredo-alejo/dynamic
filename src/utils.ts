@@ -67,3 +67,20 @@ export const lerpColor = (color1: number[], color2: number[], alpha: number) => 
         (color2[3] - color1[3]) * alpha + color1[3]
     ]
 }
+
+let resizeCallback: Function = () => { }
+
+export const onResizeCanvas = (callback: Function) => {
+    resizeCallback = callback
+}
+
+const resizeCanvas = (canvas: HTMLCanvasElement) => {
+    canvas.width = innerWidth
+    canvas.height = innerHeight
+
+    resizeCallback()
+}
+
+export const addResizeCanvasListener = (canvas: HTMLCanvasElement) => {
+    addEventListener("resize", () => resizeCanvas(canvas) )
+}

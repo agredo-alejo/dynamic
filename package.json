@@ -1,6 +1,6 @@
 {
   "name": "@apjs/dynamic",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Dynamic is a library with a set of functions to facilitate the use of the HTML canvas, mouse and touch events, functionality around the 'requestAnimationFrame' method, and some mathematical utilities",
   "main": "build/index.js",
   "scripts": {
