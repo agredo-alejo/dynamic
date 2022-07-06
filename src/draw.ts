@@ -143,6 +143,7 @@ export const rect = (
     width: number = 10,
     height?: number
 ) => {
+    ctx.beginPath()
     if (position instanceof Vector) {
         ctx.rect(position.x, position.y, positionY, width || positionY)
         return
