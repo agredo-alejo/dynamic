@@ -65,6 +65,14 @@ export const moveTo = (ctx: CanvasRenderingContext2D, x: Vector | number, y = 0)
     ctx.moveTo(x, y)
 }
 
+export const lineTo = (ctx: CanvasRenderingContext2D, x: Vector | number, y = 0) => {
+    if (x instanceof Vector) {
+        ctx.lineTo(x.x, x.y)
+        return
+    }
+    ctx.lineTo(x, y)
+}
+
 export const scaleCanvas = (ctx: CanvasRenderingContext2D, scale: Vector) => {
     ctx.scale(scale.x, scale.y)
 }
@@ -181,6 +189,26 @@ export const rectVector = (
     ctx.rect(position.x, position.y, width, height || width)
 }
 
+export const lineVector = (ctx: CanvasRenderingContext2D, point1: Vector, point2: Vector) => {
+    ctx.beginPath()
+    ctx.moveTo(point1.x, point1.y)
+    ctx.lineTo(point2.x, point2.y)
+    ctx.closePath()
+}
+
+export const line = (
+    ctx: CanvasRenderingContext2D,
+    startX: number,
+    startY: number,
+    endX: number,
+    endY: number
+) => {
+    ctx.beginPath()
+    ctx.moveTo(startX, startY)
+    ctx.lineTo(endX, endY)
+    ctx.closePath()
+}
+
 export const triangleVector = (ctx: CanvasRenderingContext2D, point1: Vector, point2: Vector, point3: Vector) => {
     ctx.beginPath()
     ctx.moveTo(point1.x, point1.y)
@@ -188,7 +216,7 @@ export const triangleVector = (ctx: CanvasRenderingContext2D, point1: Vector, po
     ctx.lineTo(point3.x, point3.y)
     ctx.closePath()
 }
-export const trainglePolar = (ctx: CanvasRenderingContext2D, point1: number[], point2: number[], point3: number[]) => {
+export const trianglePolar = (ctx: CanvasRenderingContext2D, point1: number[], point2: number[], point3: number[]) => {
     ctx.beginPath()
     ctx.moveTo(point1[0] * Math.cos(point1[1]), point1[0] * Math.sin(point1[1]))
     ctx.lineTo(point2[0] * Math.cos(point2[1]), point2[0] * Math.sin(point2[1]))
