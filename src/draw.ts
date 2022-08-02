@@ -109,7 +109,7 @@ export const circle = (
     radius?: number,
     startAngle?: number,
     endAngle?: number,
-    anticlockwise?: boolean) => {
+    anticlockwise: boolean = true) => {
 
     ctx.beginPath()
 
@@ -139,7 +139,7 @@ export const circleVector = (
     radius: number,
     startAngle?: number,
     endAngle?: number,
-    anticlockwise?: boolean,
+    anticlockwise: boolean = true,
 ) => {
 
     ctx.beginPath()
@@ -150,7 +150,7 @@ export const circleVector = (
         radius || ctx.lineWidth,
         startAngle || 0,
         endAngle || Tau,
-        anticlockwise as boolean)
+        anticlockwise)
 }
 
 
